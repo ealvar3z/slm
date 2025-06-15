@@ -6,10 +6,10 @@ slm is a small stub port of [Simon Williamson's LLM Python CLI](https://github.c
 Features
 -------
 
-*`-c `					: Continue previous conversation
+*`-c `				: Continue previous conversation
 * `-m <model>`			: Override the default model (gpt-4o)
 * `-s`  <system_prompt>`	: Override the default system prompt.
-* `-t`					: Override the default temperature setting (0.7)
+* `-t`				: Override the default temperature setting (0.7)
 
 License
 ------

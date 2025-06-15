@@ -1,0 +1,41 @@
+#!/bin/rc
+# build.rc — rc script to build/test/install slm on 9front
+
+build{
+    echo 'Building slm...'
+    env GOOS=plan9 go build -o /bin/slm slm.go
+    echo 'Build complete.'
+}
+
+test{
+    go test -v .
+}
+
+# Remove the installed binary
+clean{
+    echo 'Cleaning up...'
+    rm -f /bin/slm
+}
+
+# Alias func
+install{
+    build
+}
+
+usage{
+    echo 'usage: build.rc [build|test|clean|install]' >[2=1]
+    exit 1
+}
+
+# Dispatch: default to build if no args
+if(~ $#* 0) {
+    build
+} else {
+    switch($1) {
+    case build   { build }
+    case test    { test }
+    case clean   { clean }
+    case install { install }
+    default     { usage }
+    }
+}
